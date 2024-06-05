@@ -61,7 +61,7 @@ const Home = () => {
             <button onClick={() => handleFilter('Completed')} className='status-button'>Completed</button>
             <button onClick={() => handleFilter('To-Do')} className='status-button'>To-Do</button>
         </div>
-        <div className='my-2 d-flex'>
+        <div className='my-2 taskCard-div'>
             {arrayItem.map((task) => <TaskCard key={task._id} task={task} />)}
         </div>
     </div>)

@@ -4,3 +4,9 @@
     color: white;
     padding: 0.5em;
 }
+
+.taskCard-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
