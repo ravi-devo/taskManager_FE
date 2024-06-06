@@ -1,0 +1,20 @@
+.registerForm-container {
+    width: 100%;
+    padding: 0 0.5em;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+    width: 100%;
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+    .registerForm-container {
+        width: 40rem; /* Set width to 40rem for screens wider than 768px */
+    }
+}

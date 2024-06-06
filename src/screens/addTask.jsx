@@ -6,6 +6,7 @@ import { addTask } from "../slices/taskSlice/taskReducer";
 import { useNavigate } from 'react-router-dom';
 import Header from "../components/navbar";
 import { toast } from "react-toastify";
+import Loader from "../components/loader";
 
 const AddTask = () => {
 
@@ -13,7 +14,7 @@ const AddTask = () => {
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
     const [category, setCategory] = useState('')
-    const [AddTaskAPI] = useAddTaskMutation();
+    const [AddTaskAPI, {isLoading}] = useAddTaskMutation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { userInfo } = useSelector(state => state.auth);
@@ -74,6 +75,7 @@ const AddTask = () => {
                     <Button className="my-2 mx-1" type="submit" style={{ backgroundColor: 'rgb(195, 121, 30)', border: 'none' }}>Create Task</Button>
                 </div>
             </Form>
+            {isLoading && <Loader />}
         </div>
     </>)
 }

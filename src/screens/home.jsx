@@ -52,18 +52,24 @@ const Home = () => {
 
     return (<div>
         <Header />
-        <div className='d-flex justify-content-between my-2'>
-            <h5>Welcome to home screen</h5>
+        {taskItems.length ? <div>
+            <div className='d-flex justify-content-between my-2'>
+                <h5>Welcome to home screen</h5>
+                <Button style={{ backgroundColor: 'rgb(195, 121, 30)', border: 'none' }} onClick={handleAddTask}>Add Task</Button>
+            </div>
+            <div className='d-flex justify-content-center my-4'>
+                <button onClick={() => handleFilter('All')} className='status-button'>All</button>
+                <button onClick={() => handleFilter('Completed')} className='status-button'>Completed</button>
+                <button onClick={() => handleFilter('To-Do')} className='status-button'>To-Do</button>
+            </div>
+            <div className='my-2 taskCard-div'>
+                {arrayItem.map((task) => <TaskCard key={task._id} task={task} />)}
+            </div>
+        </div> : 
+        <div className='d-flex justify-content-center align-items-center flex-column'>
+            <h3 className='my-5 text-center'>You do not have any task created, add some</h3>
             <Button style={{ backgroundColor: 'rgb(195, 121, 30)', border: 'none' }} onClick={handleAddTask}>Add Task</Button>
-        </div>
-        <div className='d-flex justify-content-center my-4'>
-            <button onClick={() => handleFilter('All')} className='status-button'>All</button>
-            <button onClick={() => handleFilter('Completed')} className='status-button'>Completed</button>
-            <button onClick={() => handleFilter('To-Do')} className='status-button'>To-Do</button>
-        </div>
-        <div className='my-2 taskCard-div'>
-            {arrayItem.map((task) => <TaskCard key={task._id} task={task} />)}
-        </div>
+        </div>}
     </div>)
 }
 

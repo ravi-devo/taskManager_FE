@@ -5,10 +5,11 @@ import { getTask } from "../slices/taskSlice/taskReducer";
 import { toast } from "react-toastify";
 import Header from "../components/navbar";
 import TaskCard from "../components/taskCard";
+import Loader from "../components/loader";
 
 const WorkTask = () => {
 
-    const [GetTasksAPI] = useGetTaskMutation();
+    const [GetTasksAPI, {isLoading}] = useGetTaskMutation();
     const dispatch = useDispatch();
     let { taskItems } = useSelector(state => state.task);
     const { userInfo } = useSelector(state => state.auth);
@@ -57,6 +58,7 @@ const WorkTask = () => {
             <div className="my-2">
                 {arrayItem.map((task) => <TaskCard key={task._id} task={task} />)}
             </div>
+            {isLoading && <Loader />}
         </div>
     </>)
 }

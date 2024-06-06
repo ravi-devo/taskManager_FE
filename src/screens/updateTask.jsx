@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import Header from "../components/navbar";
+import Loader from "../components/loader";
 
 const UpdateTask = () => {
 
@@ -13,7 +14,7 @@ const UpdateTask = () => {
     const { task } = location.state;
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [UpdateTaskAPI] = useUpdateTaskMutation();
+    const [UpdateTaskAPI, {isLoading}] = useUpdateTaskMutation();
     const { userInfo } = useSelector(state => state.auth);
     const token = userInfo.token;
     const [title, setTitle] = useState(task.title);
@@ -89,6 +90,7 @@ const UpdateTask = () => {
                     <Button className="my-2 mx-1" type="submit" style={{ backgroundColor: 'rgb(195, 121, 30)', border: 'none' }}>Update Task</Button>
                 </div>
             </Form>
+            {isLoading && <Loader />}
         </div>
     </>)
 }
